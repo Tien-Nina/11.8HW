@@ -1,0 +1,33 @@
+public class Hw11_8 {
+
+	public static void main (String[] args) {
+	    Account1.setAnnualInterestRate(1.5);//設定年利率1.5%
+
+	    Account1 account = new Account1("George", 1122, 1000);//宣告並建立account1的預設值
+	    account.deposit(30);//呼叫deposit的方法
+	    account.deposit(40);//呼叫deposit的方法
+	    account.deposit(50);//呼叫deposit的方法
+	    
+	    account.withdraw(5);//呼叫withdraw的方法
+	    account.withdraw(4);//呼叫withdraw的方法
+	    account.withdraw(2);//呼叫withdraw的方法
+	    //以下為輸出帳戶持有人的姓名,年利率,結餘以及所有交易記錄
+	    System.out.println("Name: " + account.getName());
+	    System.out.println("Annual interest rate: " + Account1.getAnnualInterestRate());
+	    System.out.println("Balance: " + account.getBalance());
+	    
+	    java.util.ArrayList list = account.getTransactions();
+	    
+	    System.out.printf("%-35s%-15s%-15s%-15s\n", "Date", "Type", "Amount", "Balance");
+	    
+	    for (int i = 0; i < list.size(); i++) {
+	      Transaction transaction = (Transaction)(list.get(i));
+	      System.out.printf("%-35s%-15s%-15s%-15s\n", transaction.getDate(), 
+	          transaction.getType(), transaction.getAmount(), transaction.getBalance());
+	    }
+	  }
+	}
+
+	
+
+	
