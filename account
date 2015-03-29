@@ -1,0 +1,70 @@
+//帳戶資料
+class Account1 {
+	  private int id;
+	  private String name;
+	  private double balance;
+	  private static double annualInterestRate;
+	  private java.util.Date dateCreated;
+	  private java.util.ArrayList transactions = new java.util.ArrayList();
+    //建構子(宣告日期類別)
+	  public Account1() {
+	    dateCreated = new java.util.Date();
+	  }
+    //建構子建立預設帳戶id,姓名和結餘及建立日期
+	  public Account1(String name, int id, double balance) {
+	    this.id = id;
+	    this.name = name;
+	    this.balance = balance;
+	    dateCreated = new java.util.Date();
+	  }
+	  //取得帳戶id
+	  public int getId() {
+	    return this.id;
+	  }
+    //取得結餘
+	  public double getBalance() {
+	    return balance;
+	  }
+    //取得交易記錄內容
+	  public java.util.ArrayList getTransactions() {
+	    return transactions;
+	  }
+    //取得姓名
+	  public String getName() {
+	    return name;
+	  }
+	 //取得年利率
+	  public static double getAnnualInterestRate() {
+	    return annualInterestRate;
+	  }
+    //設定id
+	  public void setId(int id) {
+	    this.id =id;
+	  }
+    //設定結餘
+	  public void setBalance(double balance) {
+	    this.balance = balance;
+	  }
+    //設定年利率
+	  public static void setAnnualInterestRate(double annualInterestRate) {
+	    Account1.annualInterestRate = annualInterestRate;
+	  }
+    //設定月利息
+	  public double getMonthlyInterest() {
+	    return balance * (annualInterestRate / 1200);
+	  }
+    //設定日期
+	  public java.util.Date getDateCreated() {
+	    return dateCreated;
+	  }
+    //設定提款方法
+	  public void withdraw(double amount) {
+	    balance -= amount;
+	    transactions.add(new Transaction('W', amount, balance, ""));
+	  }
+    //存款方法
+	  public void deposit(double amount) {
+	    balance += amount;
+	    transactions.add(new Transaction('D', amount, balance, ""));
+	  }
+	}
